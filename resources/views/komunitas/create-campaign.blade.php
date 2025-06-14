@@ -20,8 +20,8 @@
             </a>
             <div class="nav-links">
                 <a href="{{ route('komunitas.dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="{{ route('komunitas.my_programs') }}"><i class="fas fa-project-diagram"></i> Program Saya</a>
-                <a href="{{ route('komunitas.create_campaign') }}" class="active"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
+                <a href="{{ route('komunitas.my-programs') }}"><i class="fas fa-project-diagram"></i> Program Saya</a>
+                <a href="{{ route('komunitas.create-campaign') }}" class="active"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
@@ -43,7 +43,7 @@
                 <p>Isi detail program sosial yang ingin Anda galang dana</p>
             </div>
 
-            <form class="campaign-form" method="POST" action="{{ route('komunitas.store_campaign') }}" enctype="multipart/form-data">
+            <form class="campaign-form" method="POST" action="{{ route('komunitas.store-campaign') }}" enctype="multipart/form-data">
                 @csrf <!-- Laravel CSRF token for security -->
 
                 <!-- Program Name -->

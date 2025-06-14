@@ -16,8 +16,8 @@
             </a>
             <div class="nav-links">
                 <a href="{{ route('komunitas.dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="{{ route('komunitas.my_programs') }}" class="active"><i class="fas fa-project-diagram"></i> Program Saya</a>
-                <a href="{{ route('komunitas.create_campaign') }}"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
+                <a href="{{ route('komunitas.my-programs') }}" class="active"><i class="fas fa-project-diagram"></i> Program Saya</a>
+                <a href="{{ route('komunitas.create-campaign') }}"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
                 <a href="#"><i class="fas fa-chart-line"></i> Laporan Anggaran</a> <a href="#"><i class="fas fa-comments"></i> Ulasan Donatur</a> <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
@@ -38,7 +38,7 @@
                     <h1>Program Saya</h1>
                     <p>Daftar kampanye yang telah Anda buat</p>
                 </div>
-                <a href="{{ route('komunitas.create_campaign') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Kampanye Baru</a>
+                <a href="{{ route('komunitas.create-campaign') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Kampanye Baru</a>
             </header>
 
             <!-- Ganti bagian programs-table -->

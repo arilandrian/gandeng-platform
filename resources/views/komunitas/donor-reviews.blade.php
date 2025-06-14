@@ -18,10 +18,10 @@
             </a>
             <div class="nav-links">
                 <a href="{{ route('komunitas.dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="{{ route('komunitas.my_programs') }}"><i class="fas fa-project-diagram"></i> Program Saya</a>
-                <a href="{{ route('komunitas.create_campaign') }}"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
-                <a href="{{ route('komunitas.budget_report') }}"><i class="fas fa-file-invoice-dollar"></i> Laporan Anggaran</a>
-                <a href="{{ route('komunitas.donor_reviews') }}" class="active"><i class="fas fa-star"></i> Ulasan Donatur</a>
+                <a href="{{ route('komunitas.my-programs') }}"><i class="fas fa-project-diagram"></i> Program Saya</a>
+                <a href="{{ route('komunitas.create-campaign') }}"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
+                <a href="{{ route('komunitas.budget-report') }}"><i class="fas fa-file-invoice-dollar"></i> Laporan Anggaran</a>
+                <a href="{{ route('komunitas.donor-reviews') }}" class="active"><i class="fas fa-star"></i> Ulasan Donatur</a>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
