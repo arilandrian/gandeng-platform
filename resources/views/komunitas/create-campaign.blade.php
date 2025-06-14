@@ -43,7 +43,7 @@
                 <p>Isi detail program sosial yang ingin Anda galang dana</p>
             </div>
 
-            <form class="campaign-form" method="POST" action="{{ route('komunitas.store-campaign') }}" enctype="multipart/form-data">
+            <form class="campaign-form" method="POST" action="{{ route('komunitas.store_campaign') }}" enctype="multipart/form-data">
                 @csrf <!-- Laravel CSRF token for security -->
 
                 <!-- Program Name -->
