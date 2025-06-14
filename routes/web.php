@@ -117,10 +117,10 @@ Route::get('/dashboard/admin', function () {
   // Komunitas Routes
 Route::prefix('komunitas')->middleware(['auth', 'role:komunitas'])->group(function () {
     Route::get('/dashboard', [KomunitasController::class, 'dashboard'])->name('komunitas.dashboard');
-    Route::get('/buat-kampanye', [KomunitasController::class, 'createCampaign'])->name('komunitas.create-campaign');
-    Route::post('/buat-kampanye', [KomunitasController::class, 'storeCampaign'])->name('komunitas.store-campaign');
-    Route::get('/program-saya', [KomunitasController::class, 'myPrograms'])->name('komunitas.my-programs');
-    Route::get('/laporan-anggaran', [KomunitasController::class, 'budgetReport'])->name('komunitas.budget-report');
+    Route::get('/buat-kampanye', [KomunitasController::class, 'createCampaign'])->name('komunitas.create_campaign');
+    Route::post('/buat-kampanye', [KomunitasController::class, 'storeCampaign'])->name('komunitas.store_campaign');
+    Route::get('/program-saya', [KomunitasController::class, 'myPrograms'])->name('komunitas.my_programs');
+    Route::get('/laporan-anggaran', [KomunitasController::class, 'budgetReport'])->name('komunitas.budget_report');
 });
   
 // Anda juga mungkin memerlukan rute POST untuk registrasi organisasi nanti
