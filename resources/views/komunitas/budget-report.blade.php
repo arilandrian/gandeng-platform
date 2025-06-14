@@ -82,16 +82,39 @@
                 </div>
             </div>
 
-            <div class="report-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Tanggal Penggunaan</th>
-                            <th>Jenis Pengeluaran</th>
-                            <th>Deskripsi Penggunaan</th>
-                            <th>Jumlah</th>
-                            <th>Bukti</th>
-                        </tr>
+            <!-- Ganti bagian report-table -->
+<div class="report-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Program</th>
+                <th>Tanggal Penggunaan</th>
+                <th>Jenis Pengeluaran</th>
+                <th>Dana Digunakan</th>
+                <th>Deskripsi Penggunaan</th>
+                <th>Jumlah</th>
+                <th>Bukti</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($reports as $report)
+            <tr>
+                <td>{{ $report->campaign->title }}</td>
+                <td>{{ $report->report_date->format('d M Y') }}</td>
+                <td>Rp {{ number_format($report->amount_used, 0, ',', '.') }}</td>
+                <td>{{ $report->description }}</td>
+                <td>
+                    @if($report->document_path)
+                    <a href="{{ asset('storage/'.$report->document_path) }}" class="report-link">Unduh</a>
+                    @else
+                    -
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
                     </thead>
                     <tbody>
                         <tr>

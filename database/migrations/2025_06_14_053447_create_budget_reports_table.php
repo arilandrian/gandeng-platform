@@ -12,26 +12,21 @@ return new class extends Migration
      * @return void
      */
     public function up(): void
-    {
-        Schema::create('budget_reports', function (Blueprint $table) {
-            $table->id(); // Primary Key
-
-            // Foreign Key ke tabel campaigns (laporan ini untuk kampanye mana)
-            $table->foreignId('campaign_id')->constrained('campaigns')->cascadeOnDelete();
-
-            $table->date('report_date'); // Tanggal penggunaan/pelaporan
-            $table->enum('expense_type', ['uang', 'barang', 'jasa']); // Jenis pengeluaran
-            $table->text('description'); // Deskripsi penggunaan
-
-            // Jumlah bisa uang atau kuantitas barang, gunakan decimal untuk uang atau string untuk fleksibilitas
-            $table->decimal('amount', 15, 2)->nullable(); // Jika jenisnya 'uang'
-            $table->string('quantity_description')->nullable(); // Jika jenisnya 'barang'/'jasa' (misal: "50 buku", "2 jam")
-
-            $table->string('proof_url')->nullable(); // Path ke bukti (PDF/gambar)
-
-            $table->timestamps(); // created_at dan updated_at
-        });
-    }
+{
+    Schema::create('budget_reports', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('campaign_id')->constrained('campaigns')->cascadeOnDelete();
+        $table->foreignId('komunitas_id')->constrained('komunitas')->cascadeOnDelete();
+        $table->date('report_date');
+        $table->enum('expense_type', ['uang', 'barang', 'jasa']);
+        $table->decimal('amount_used', 15, 2);
+        $table->text('description');
+        $table->string('document_path')->nullable();
+        $table->string('quantity_description')->nullable();
+        $table->string('proof_url')->nullable();
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.

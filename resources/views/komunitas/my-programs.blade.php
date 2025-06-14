@@ -41,14 +41,35 @@
                 <a href="{{ route('komunitas.create_campaign') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Buat Kampanye Baru</a>
             </header>
 
-            <div class="programs-table">
-                <div class="table-header">
-                    <div class="col-title">Judul Program</div>
-                    <div class="col-status">Status</div>
-                    <div class="col-donation">Total Donasi</div>
-                    <div class="col-date">Tanggal Mulai</div>
-                    <div class="col-actions">Aksi</div>
-                </div>
+            <!-- Ganti bagian programs-table -->
+<div class="programs-table">
+    <div class="table-header">
+        <div class="col-title">Judul Program</div>
+        <div class="col-status">Status</div>
+        <div class="col-donation">Total Donasi</div>
+        <div class="col-date">Tanggal Mulai</div>
+        <div class="col-actions">Aksi</div>
+    </div>
+
+    @foreach($campaigns as $campaign)
+    <div class="table-row">
+        <div class="col-title">{{ $campaign->title }}</div>
+        <div class="col-status">
+            <span class="status-badge {{ $campaign->status == 'active' ? 'ongoing' : ($campaign->status == 'completed' ? 'completed' : 'pending') }}">
+                {{ $campaign->status == 'active' ? 'Berlangsung' : ($campaign->status == 'completed' ? 'Selesai' : 'Pending') }}
+            </span>
+        </div>
+        <div class="col-donation">Rp {{ number_format($campaign->current_amount, 0, ',', '.') }}</div>
+        <div class="col-date">{{ $campaign->created_at->format('d M Y') }}</div>
+        <div class="col-actions">
+            <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-outline">Lihat Detail</a>
+            @if($campaign->status == 'active')
+            <a href="{{ route('komunitas.budget-report') }}" class="btn btn-outline report">Lihat Laporan</a>
+            @endif
+        </div>
+    </div>
+    @endforeach
+</div>
 
                 <div class="table-row">
                     <div class="col-title">Sekolah Anak Pulau</div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController; // Pastikan ini diimpor!
+use App\Http\Controllers\KomunitasController;
 
 // Rute Landing Page
 Route::get('/', function () {
@@ -112,6 +113,15 @@ Route::get('/dashboard/admin', function () {
     return view('admin.dashboard'); // Menunjuk ke view admin.dashboard
 })->middleware(['auth', 'role:admin'])
   ->name('admin.dashboard');
+
+  // Komunitas Routes
+Route::prefix('komunitas')->middleware(['auth', 'role:komunitas'])->group(function () {
+    Route::get('/dashboard', [KomunitasController::class, 'dashboard'])->name('komunitas.dashboard');
+    Route::get('/buat-kampanye', [KomunitasController::class, 'createCampaign'])->name('komunitas.create-campaign');
+    Route::post('/buat-kampanye', [KomunitasController::class, 'storeCampaign'])->name('komunitas.store-campaign');
+    Route::get('/program-saya', [KomunitasController::class, 'myPrograms'])->name('komunitas.my-programs');
+    Route::get('/laporan-anggaran', [KomunitasController::class, 'budgetReport'])->name('komunitas.budget-report');
+});
   
 // Anda juga mungkin memerlukan rute POST untuk registrasi organisasi nanti
 // Route::post('/register/organisasi', [RegisterController::class, 'registerOrganisasi'])
