@@ -18,10 +18,10 @@
             </a>
             <div class="nav-links">
                 <a href="{{ route('komunitas.dashboard') }}" class="active"><i class="fas fa-home"></i> Dashboard</a>
-                <a href="#"><i class="fas fa-plus-circle"></i> Buat Program</a>
-                <a href="#"><i class="fas fa-list-alt"></i> Program Saya</a>
-                <a href="#"><i class="fas fa-chart-line"></i> Laporan Anggaran</a>
-                <a href="#"><i class="fas fa-comments"></i> Ulasan Donatur</a>
+                <a href="{{ route('komunitas.create_campaign') }}"><i class="fas fa-plus-circle"></i> Buat Program</a>
+                <a href="{{ route('komunitas.my_programs') }}"><i class="fas fa-list-alt"></i> Program Saya</a>
+                <a href="{{ route('komunitas.budget_report') }}"><i class="fas fa-chart-line"></i> Laporan Anggaran</a>
+                <a href="{{ route('komunitas.donor_reviews') }}"><i class="fas fa-comments"></i> Ulasan Donatur</a>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
@@ -47,14 +47,14 @@
                     <i class="fas fa-hands-helping"></i>
                     <div class="card-content">
                         <h3>Total Program Aktif</h3>
-                        <span class="number">3</span>
+                        <span class="number">{{ $activeCampaigns->count() }}</span>
                     </div>
                 </div>
                 <div class="summary-card">
                     <i class="fas fa-hand-holding-usd"></i>
                     <div class="card-content">
                         <h3>Total Donasi Diterima</h3>
-                        <span class="number">Rp 12.500.000</span>
+                        <span class="number">Rp {{ number_format($totalDonations ?? 0, 0, ',', '.') }}</span>
                     </div>
                 </div>
                 <div class="summary-card">
@@ -66,9 +66,45 @@
                 </div>
             </div>
 
+            <section class="program-statistics">
+                <h2>Program Aktif</h2>
+                <div class="program-stats-grid">
+                    @forelse($activeCampaigns as $campaign)
+                    <div class="program-stat-card">
+                        <h3>{{ $campaign->title }}</h3>
+                        <div class="stat-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Target Donasi: Rp {{ number_format($campaign->target_amount, 0, ',', '.') }}</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Terkumpul: Rp {{ number_format($campaign->current_amount, 0, ',', '.') }}</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-percentage"></i>
+                            @php
+                                $percentage = ($campaign->target_amount > 0) ? 
+                                    ($campaign->current_amount / $campaign->target_amount) * 100 : 0;
+                            @endphp
+                            <span>{{ number_format($percentage, 0) }}% Tercapai</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Berakhir: {{ \Carbon\Carbon::parse($campaign->end_date)->format('d M Y') }}</span>
+                        </div>
+                    </div>
+                    @empty
+                    <div class="empty-state">
+                        <p>Belum ada program aktif.</p>
+                    </div>
+                    @endforelse
+                </div>
+            </section>
+
             <section class="recent-donations">
                 <h2>Donasi Terbaru</h2>
                 <div class="donation-list">
+                    <!-- Data donasi bisa diubah menjadi dinamis jika diperlukan -->
                     <div class="donation-item">
                         <div class="donation-info">
                             <h3>Donatur Anonim</h3>
@@ -80,62 +116,21 @@
                         <div class="donation-info">
                             <h3>Budi Santoso</h3>
                             <p>Rp 250.000</p>
-                        </div>
+                            </div>
                         <span class="donation-date">14 Jun 2023</span>
                     </div>
-                    <div class="donation-item">
+                            <div class="donation-item">
                         <div class="donation-info">
                             <h3>Siti Aminah</h3>
                             <p>Rp 100.000</p>
                         </div>
                         <span class="donation-date">13 Jun 2023</span>
                     </div>
-                    </div>
-                <a href="#" class="btn-primary">Lihat Semua Donasi</a>
+                        </div>
+                        <a href="#" class="btn-primary">Lihat Semua Donasi</a>
             </section>
-
-            <section class="program-statistics">
-                <h2>Statistik Program</h2>
-                <div class="program-stats-grid">
-                    <div class="program-stat-card">
-                        <h3>Penghijauan Kota Kendari</h3>
-                        <div class="stat-item">
-                            <i class="fas fa-bullhorn"></i>
-                            <span>Target Donasi: Rp 10.000.000</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Terkumpul: Rp 7.500.000</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-percentage"></i>
-                            <span>75% Tercapai</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Berakhir: 30 Jun 2023</span>
-                        </div>
-                    </div>
-                    <div class="program-stat-card">
-                        <h3>Bantuan Pendidikan Anak Nelayan</h3>
-                        <div class="stat-item">
-                            <i class="fas fa-bullhorn"></i>
-                            <span>Target Donasi: 50 Paket Alat Tulis</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Terkumpul: 35 Paket</span>
-                        </div>
-                        <div class="stat-item">
-                            <i class="fas fa-percentage"></i>
-                            <span>70% Tercapai</span>
-                        </div>
-                         <div class="stat-item">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Berakhir: 15 Jul 2023</span>
-                        </div>
-                    </div>
-                    </div>
+            </div>
+                </div>
             </section>
         </div>
     </main>
