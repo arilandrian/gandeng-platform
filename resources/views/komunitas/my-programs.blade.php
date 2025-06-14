@@ -70,48 +70,6 @@
     </div>
     @endforeach
 </div>
-
-                <div class="table-row">
-                    <div class="col-title">Sekolah Anak Pulau</div>
-                    <div class="col-status">
-                        <span class="status-badge ongoing">Berlangsung</span>
-                    </div>
-                    <div class="col-donation">Rp 3.500.000</div>
-                    <div class="col-date">01 Mei 2025</div>
-                    <div class="col-actions">
-                        <a href="{{ route('campaigns.show') }}" class="btn btn-outline">Lihat Detail</a>
-                        <a href="#" class="btn btn-outline">Edit</a>
-                    </div>
-                </div>
-
-                <div class="table-row">
-                    <div class="col-title">Air Bersih Desa Lemo</div>
-                    <div class="col-status">
-                        <span class="status-badge completed">Selesai</span>
-                    </div>
-                    <div class="col-donation">Rp 5.200.000</div>
-                    <div class="col-date">20 Mar 2025</div>
-                    <div class="col-actions">
-                        <a href="{{ route('campaigns.show') }}" class="btn btn-outline">Lihat Detail</a>
-                        <a href="#" class="btn btn-outline report">Lihat Laporan</a>
-                    </div>
-                </div>
-
-                <div class="table-row">
-                    <div class="col-title">Bantuan Medis Lansia</div>
-                    <div class="col-status">
-                        <span class="status-badge ongoing">Berlangsung</span>
-                    </div>
-                    <div class="col-donation">Rp 1.750.000</div>
-                    <div class="col-date">10 Jun 2025</div>
-                    <div class="col-actions">
-                        <a href="{{ route('campaigns.show') }}" class="btn btn-outline">Lihat Detail</a>
-                        <a href="#" class="btn btn-outline">Edit</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
     <script>
         // JavaScript untuk menu toggle pada navbar (dari styles.css)
         document.addEventListener('DOMContentLoaded', function() {

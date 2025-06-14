@@ -114,48 +114,7 @@
             @endforeach
         </tbody>
     </table>
-</div>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>05 Mei 2025</td>
-                            <td><span class="badge money">Dana</span></td>
-                            <td>Pembelian alat tulis</td>
-                            <td>Rp 500.000</td>
-                            <td><a href="#" class="report-link">laporan_pembelian.pdf</a></td>
-                        </tr>
-                        <tr>
-                            <td>12 April 2025</td>
-                            <td><span class="badge goods">Barang</span></td>
-                            <td>Buku bacaan anak</td>
-                            <td>50 buku</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>28 Maret 2025</td>
-                            <td><span class="badge money">Dana</span></td>
-                            <td>Transportasi relawan</td>
-                            <td>Rp 1.200.000</td>
-                            <td><a href="#" class="report-link">kwitansi_transport.pdf</a></td>
-                        </tr>
-                        <tr>
-                            <td>15 Maret 2025</td>
-                            <td><span class="badge money">Dana</span></td>
-                            <td>Pembelian obat-obatan</td>
-                            <td>Rp 3.000.000</td>
-                            <td><a href="#" class="report-link">faktur_obat.pdf</a></td>
-                        </tr>
-                        <tr>
-                            <td>03 Maret 2025</td>
-                            <td><span class="badge goods">Barang</span></td>
-                            <td>Makanan bergizi</td>
-                            <td>100 paket</td>
-                            <td><a href="#" class="report-link">foto_kegiatan.jpg</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
+    </div>
             <div class="important-note">
                 <i class="fas fa-info-circle"></i>
                 <p>Laporan ini dapat dilihat oleh donatur untuk menjaga transparansi dan akuntabilitas. </p>
