@@ -49,7 +49,7 @@
                 <!-- Program Name -->
                 <div class="form-group">
                     <label for="program-name">Nama Program</label>
-                    <input type="text" id="program-name" name="program_name" placeholder="Contoh: Penghijauan Kota Kendari" required>
+                    <input type="text" id="program-name" name="title" placeholder="Contoh: Penghijauan Kota Kendari" required>
                 </div>
 
                 <!-- Category -->
@@ -80,7 +80,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="target">Target Dana (Rp)</label>
-                        <input type="number" id="target" name="target_fund" placeholder="Contoh: 15000000" required>
+                        <input type="number" id="target" name="target_amount" placeholder="Contoh: 15000000" required>
                     </div>
                     <div class="form-group">
                         <label for="start-date">Tanggal Mulai</label>
@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <label for="image">Unggah Gambar Program</label>
                     <div class="file-upload">
-                        <input type="file" id="image" name="program_image" accept="image/*" required>
+                        <input type="file" id="image" name="image_url" accept="image/*" required>
                         <label for="image" class="upload-label">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <span>Pilih file gambar</span>
