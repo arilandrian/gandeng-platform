@@ -101,20 +101,24 @@
             <tr>
                 <td>{{ $report->campaign->title }}</td>
                 <td>{{ $report->report_date->format('d M Y') }}</td>
+                <td>{{ $report->expense_type }}</td> <!-- Jenis Pengeluaran -->
                 <td>Rp {{ number_format($report->amount_used, 0, ',', '.') }}</td>
                 <td>{{ $report->description }}</td>
+                <td>{{ $report->quantity_description ?? '-' }}</td> <!-- Jumlah -->
                 <td>
-                    @if($report->document_path)
-                    <a href="{{ asset('storage/'.$report->document_path) }}" class="report-link">Unduh</a>
+                    @if($report->proof_url)
+                        <a href="{{ $report->proof_url }}" target="_blank" class="report-link">Lihat</a>
+                    @elseif($report->document_path)
+                        <a href="{{ asset('storage/'.$report->document_path) }}" class="report-link">Unduh</a>
                     @else
-                    -
+                        -
                     @endif
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    </div>
+</div>
             <div class="important-note">
                 <i class="fas fa-info-circle"></i>
                 <p>Laporan ini dapat dilihat oleh donatur untuk menjaga transparansi dan akuntabilitas. </p>

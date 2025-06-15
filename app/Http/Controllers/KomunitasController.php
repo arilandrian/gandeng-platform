@@ -70,13 +70,35 @@ class KomunitasController extends Controller
         return view('komunitas.my-programs', compact('campaigns'));
     }
 
-    public function budgetReport()
-    {
-        $reports = BudgetReport::where('komunitas_id', Auth::user()->komunitas->id)
-            ->with('campaign')
-            ->orderBy('created_at', 'desc')
-            ->get();
+    public function budgetReport(Request $request)
+{
+    $komunitasId = Auth::user()->komunitas->id;
 
-        return view('komunitas.budget-report', compact('reports'));
-    }
+    // Ambil semua program milik komunitas untuk dropdown filter
+    $campaigns = Campaign::where('komunitas_id', $komunitasId)->get();
+
+    // Query laporan (bisa difilter oleh campaign_id jika ada)
+    $reports = BudgetReport::where('komunitas_id', $komunitasId)
+        ->when($request->campaign_id, function ($query) use ($request) {
+            $query->where('campaign_id', $request->campaign_id);
+        })
+        ->with('campaign')
+        ->orderBy('report_date', 'desc')
+        ->get();
+
+    // Hitung total dana
+    $totalReceived = Donation::whereHas('campaign', function ($query) use ($komunitasId) {
+            $query->where('komunitas_id', $komunitasId);
+        })->sum('amount');
+
+    $totalUsed = $reports->sum('amount_used');
+    $remaining = $totalReceived - $totalUsed;
+
+    return view('komunitas.budget-report', compact(
+        'reports',
+        'campaigns',
+        'totalReceived',
+        'totalUsed',
+        'remaining'
+    ));
 }

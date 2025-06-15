@@ -18,7 +18,9 @@
                 <a href="{{ route('komunitas.dashboard') }}"><i class="fas fa-home"></i> Dashboard</a>
                 <a href="{{ route('komunitas.my-programs') }}" class="active"><i class="fas fa-project-diagram"></i> Program Saya</a>
                 <a href="{{ route('komunitas.create-campaign') }}"><i class="fas fa-plus-circle"></i> Buat Kampanye</a>
-                <a href="#"><i class="fas fa-chart-line"></i> Laporan Anggaran</a> <a href="#"><i class="fas fa-comments"></i> Ulasan Donatur</a> <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <a href="{{ route('komunitas.budget-report') }}"><i class="fas fa-chart-line"></i> Laporan Anggaran</a>
+                <a href="{{ route('komunitas.donor-reviews') }}"><i class="fas fa-comments"></i> Ulasan Donatur</a>
+                 <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -62,7 +64,7 @@
         <div class="col-donation">Rp {{ number_format($campaign->current_amount, 0, ',', '.') }}</div>
         <div class="col-date">{{ $campaign->created_at->format('d M Y') }}</div>
         <div class="col-actions">
-            <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-outline">Lihat Detail</a>
+            <a href="{{ route('komunitas.my-programs') }}" class="btn btn-outline">Lihat Detail</a>
             @if($campaign->status == 'active')
             <a href="{{ route('komunitas.budget-report') }}" class="btn btn-outline report">Lihat Laporan</a>
             @endif
